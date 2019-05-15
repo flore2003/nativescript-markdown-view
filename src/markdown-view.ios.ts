@@ -1,30 +1,21 @@
 import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
 
-declare class MarkDownTextView {
-
-    text: string;
-
-}
-
 export class MarkdownView extends MarkdownViewBase {
 
-    _ios: MarkDownTextView;
+    _ios: UILabel;
 
     constructor() {
         super();
     }
 
-    get ios(): MarkDownTextView {
-        return this._ios;
-    }
-
     public createNativeView() {
-        this._ios = new MarkDownTextView();
+        this._ios = super.createNativeView() as UILabel;
         return this._ios;
     }
 
     [markdownProperty.setNative](markdown: string) {
-        this._ios.text = markdown;
+        const md = new SwiftyMarkdown({ string: markdown });
+        this._ios.attributedText = md.attributedString();
     }
 
 }

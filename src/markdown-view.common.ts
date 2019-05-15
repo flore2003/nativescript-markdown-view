@@ -1,7 +1,7 @@
-import { TextBase } from 'tns-core-modules/ui/text-base';
 import { Property } from 'tns-core-modules/ui/core/view';
+import {Label} from "tns-core-modules/ui/label";
 
-export class MarkdownViewBase extends TextBase {
+export class MarkdownViewBase extends Label {
 
     /**
      * Gets the native [android widget](http://developer.android.com/reference/android/widget/TextView.html) that represents the user interface for this component. Valid only when running on Android OS.

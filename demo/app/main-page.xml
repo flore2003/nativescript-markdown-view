@@ -1,6 +1,6 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
-  xmlns:MV="nativescript-markdown-view">
-  <StackLayout class="p-20">
-    <MV:MarkdownView markdown="**This** should be _bold_! Let's see if the text will wrap, if there is too much to fit in one line" />
-  </StackLayout>
+  xmlns:mv="nativescript-markdown-view">
+  <FlexboxLayout class="p-20" flexDirection="column">
+    <mv:MarkdownView textWrap="true" markdown="**This** should be _bold_! Let's see if the text will wrap, if there is too much to fit in one line" />
+  </FlexboxLayout>
 </Page>

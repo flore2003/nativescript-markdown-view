@@ -1,1 +1,17 @@
-pod "markymark"
+pre_install do |installer|
+    installer.analysis_result.specifications.each do |s|
+        if s.name == 'SwiftyMarkdown'
+            s.swift_version = '4.2'
+        end
+    end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['SWIFT_SWIFT3_OBJC_INFERENCE'] = 'On'
+    end
+  end
+end
+
+pod 'SwiftyMarkdown'

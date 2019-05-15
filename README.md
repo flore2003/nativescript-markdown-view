@@ -7,7 +7,7 @@
 
 A NativeScript plugin that provides a natively rendered markdown view. 
 
-Uses [Markwon](https://github.com/noties/Markwon) on Android and [Marky-Mark](https://github.com/M2Mobi/Marky-Mark) on iOS.
+Uses [Markwon](https://github.com/noties/Markwon) on Android and [SwiftyMarkdown](https://github.com/SimonFairbairn/SwiftyMarkdown) on iOS.
 
 ## Installation
 
