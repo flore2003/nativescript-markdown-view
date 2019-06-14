@@ -14,8 +14,8 @@ export class MarkdownView extends MarkdownViewBase {
     }
 
     [markdownProperty.setNative](markdown: string) {
-        const md = new SwiftyMarkdown({ string: markdown });
-        this._ios.attributedText = md.attributedString();
+        const md = TSMarkdownParser.standardParser();
+        this._ios.attributedText = md.attributedStringFromMarkdown(markdown);
     }
 
 }
