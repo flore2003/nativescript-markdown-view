@@ -23,7 +23,6 @@ export class MarkdownView extends MarkdownViewBase {
     }
 
     [markdownProperty.setNative](markdown: string) {
-        console.log(markdown);
         this.markwon.setMarkdown(this.nativeView, markdown);
     }
 

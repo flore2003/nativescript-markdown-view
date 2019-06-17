@@ -1,22 +1,24 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded" class="page"
-  xmlns:mv="nativescript-markdown-view">
-  <FlexboxLayout class="p-20" flexDirection="column">
-    <Label text="Headings" style="margin-top: 10; margin-bottom: 10;"/>
-    <mv:MarkdownView textWrap="true" markdown="{{headings}}" />
-    
-    <Label text="Emphasis" style="margin-top: 10; margin-bottom: 10;"/>
-    <mv:MarkdownView textWrap="true" markdown="{{emphasis}}" />
-    
-    <Label text="Lists" style="margin-top: 10; margin-bottom: 10;"/>
-    <mv:MarkdownView textWrap="true" markdown="{{lists}}" />
+      xmlns:mv="nativescript-markdown-view">
+    <ScrollView>
+        <FlexboxLayout class="p-20" flexDirection="column">
+            <Label text="Headings" style="margin-top: 10; margin-bottom: 10;"/>
+            <mv:MarkdownView textWrap="true" markdown="{{headings}}"/>
 
-    <Label text="Link" style="margin-top: 10; margin-bottom: 10;"/>
-    <mv:MarkdownView textWrap="true" markdown="{{link}}" />
+            <Label text="Emphasis" style="margin-top: 10; margin-bottom: 10;"/>
+            <mv:MarkdownView textWrap="true" markdown="{{emphasis}}"/>
 
-    <Label text="Quote" style="margin-top: 10; margin-bottom: 10;"/>
-    <mv:MarkdownView textWrap="true" markdown="{{quote}}" />
+            <Label text="Lists" style="margin-top: 10; margin-bottom: 10;"/>
+            <mv:MarkdownView textWrap="true" markdown="{{lists}}"/>
 
-    <Label text="Code" style="margin-top: 10; margin-bottom: 10;"/>
-    <mv:MarkdownView textWrap="true" markdown="{{code}}" />
-  </FlexboxLayout>
+            <Label text="Link" style="margin-top: 10; margin-bottom: 10;"/>
+            <mv:MarkdownView textWrap="true" markdown="{{link}}"/>
+
+            <Label text="Quote" style="margin-top: 10; margin-bottom: 10;"/>
+            <mv:MarkdownView textWrap="true" markdown="{{quote}}"/>
+
+            <Label text="Code" style="margin-top: 10; margin-bottom: 10;"/>
+            <mv:MarkdownView textWrap="true" markdown="{{code}}"/>
+        </FlexboxLayout>
+    </ScrollView>
 </Page>
