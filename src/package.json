@@ -1,6 +1,6 @@
 {
     "name": "nativescript-markdown-view",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "A NativeScript plugin that provides a natively rendered markdown view",
     "main": "markdown-view",
     "typings": "index.d.ts",
@@ -38,13 +38,13 @@
         "iOS"
     ],
     "author": {
-        "name": "Your Name",
-        "email": "youremail@yourdomain.com"
+        "name": "Florian Reifschneider",
+        "email": "florian@rocketloop.de"
     },
     "bugs": {
         "url": "https://github.com/flore2003/nativescript-markdown-view/issues"
     },
-    "license": "Apache-2.0",
+    "license": "MIT",
     "homepage": "https://github.com/flore2003/nativescript-markdown-view",
     "readmeFilename": "README.md",
     "devDependencies": {
