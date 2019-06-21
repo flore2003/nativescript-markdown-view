@@ -1,9 +1,9 @@
 # NativeScript Markdown View
 
 [![npm version](https://badge.fury.io/js/nativescript-markdown-view.svg)](http://badge.fury.io/js/nativescript-markdown-view)
+[![Build Status](https://travis-ci.com/flore2003/nativescript-markdown-view.svg?branch=master)](https://travis-ci.com/flore2003/nativescript-markdown-view)
 
 [![NPM](https://nodei.co/npm/nativescript-markdown-view.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/nativescript-markdown-view/)
-
 
 A NativeScript plugin that provides a natively rendered markdown view. 
 
