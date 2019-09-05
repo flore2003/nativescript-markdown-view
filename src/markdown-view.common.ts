@@ -20,4 +20,12 @@ export const markdownProperty = new Property<MarkdownViewBase, string>({
     defaultValue: "",
     affectsLayout: true
 });
+
+export const fontSizeProperty = new Property<MarkdownViewBase, number>({
+    name: "fontSize",
+    defaultValue: 18,
+    affectsLayout: true
+});
+
 markdownProperty.register(MarkdownViewBase);
+fontSizeProperty.register(MarkdownViewBase);
