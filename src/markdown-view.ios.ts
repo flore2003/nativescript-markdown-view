@@ -36,7 +36,6 @@ export class MarkdownView extends MarkdownViewBase {
         md.emphasisAttributes = emphasisAttributes;
         md.strongAttributes = strongAttributes;
 
-
         this._ios.attributedText = md.attributedStringFromMarkdown(markdown);
     }
 
