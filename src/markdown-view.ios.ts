@@ -16,7 +16,6 @@ export class MarkdownView extends MarkdownViewBase {
     }
 
     [fontSizeProperty.setNative](size: number) {
-        console.log({size});
         this._fontSize = size;
     }
 
