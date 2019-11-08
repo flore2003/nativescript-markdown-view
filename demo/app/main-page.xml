@@ -2,6 +2,10 @@
       xmlns:mv="nativescript-markdown-view">
     <ScrollView>
         <FlexboxLayout class="p-20" flexDirection="column">
+            <Label text="Text" style="margin-top: 10; margin-bottom: 10;"/>
+            <mv:MarkdownView textWrap="true" markdown="{{text}}"/>
+            <mv:MarkdownView textWrap="true" markdown="{{text}}" fontSize="12"/>
+
             <Label text="Headings" style="margin-top: 10; margin-bottom: 10;"/>
             <mv:MarkdownView textWrap="true" markdown="{{headings}}"/>
 
