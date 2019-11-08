@@ -1,6 +1,6 @@
 {
     "name": "nativescript-markdown-view",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "description": "A NativeScript plugin that provides a natively rendered markdown view",
     "main": "markdown-view",
     "typings": "index.d.ts",
