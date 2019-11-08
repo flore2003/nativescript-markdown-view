@@ -36,11 +36,13 @@ matrix:
     language: node_js
     os: linux
     node_js: '10'
-    before_deploy:
+    script:
+      - ls
       - cd publish
       - ./prepare.sh
       - cd src
     deploy:
+      skip_cleanup: true
       provider: npm
       email: florian@rocketloop.de
       api_key:
