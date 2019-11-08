@@ -1,61 +1,71 @@
 matrix:
   include:
-    - stage: "Lint"
-      language: node_js
-      os: linux
-      node_js: "10"
-      script:
-        - cd src && npm run ci.tslint
-        - cd ../demo && npm run ci.tslint
-    - stage: "WebPack, Build and Test"
-      os: osx
-      env:
-        - WebPack="iOS"
-      osx_image: xcode10.2
-      language: node_js 
-      node_js: "10"
-      jdk: oraclejdk8
-      script: cd demo && npm run build.plugin && npm i && tns build ios --bundle --env.uglify
-    - language: android
-      os: linux
-      env:
-        - WebPack="Android"
-      jdk: oraclejdk8
-      before_install: nvm install 10
-      script: cd demo && npm run build.plugin && npm i && tns build android --bundle --env.uglify --env.snapshot
-    - language: android
-      env: 
-        - BuildAndroid="28"
-      os: linux
-      jdk: oraclejdk8
-      before_install: nvm install 10
-      script:
-        - cd src && npm i && npm run tsc && cd ../demo && tns build android
-    - os: osx
-      env: 
-        - BuildiOS="12"
-        - Xcode="10.0"
-      osx_image: xcode10.2
-      language: node_js 
-      node_js: "10"
-      jdk: oraclejdk8
-      script: 
-        - cd src && npm i && npm run tsc && cd ../demo && tns build ios
-
+  - stage: Lint
+    language: node_js
+    os: linux
+    node_js: '10'
+    script:
+    - cd src && npm run ci.tslint
+    - cd ../demo && npm run ci.tslint
+  - stage: WebPack, Build and Test
+    os: osx
+    env:
+    - WebPack="iOS"
+    osx_image: xcode10.2
+    language: node_js
+    node_js: '10'
+    jdk: oraclejdk8
+    script: cd demo && npm run build.plugin && npm i && tns build ios --bundle --env.uglify
+  - language: android
+    os: linux
+    env:
+    - WebPack="Android"
+    jdk: oraclejdk8
+    before_install: nvm install 10
+    script: cd demo && npm run build.plugin && npm i && tns build android --bundle
+      --env.uglify --env.snapshot
+  - language: android
+    env:
+    - BuildAndroid="28"
+    os: linux
+    jdk: oraclejdk8
+    before_install: nvm install 10
+    script:
+    - cd src && npm i && npm run tsc && cd ../demo && tns build android
+  - os: osx
+    env:
+    - BuildiOS="12"
+    - Xcode="10.0"
+    osx_image: xcode10.2
+    language: node_js
+    node_js: '10'
+    jdk: oraclejdk8
+    script:
+    - cd src && npm i && npm run tsc && cd ../demo && tns build ios
 android:
   components:
-    - tools
-    - platform-tools
-    - build-tools-28.0.3
-    - android-28
-    - extra-android-m2repository
-    - sys-img-armeabi-v7a-android-21
-
+  - tools
+  - platform-tools
+  - build-tools-28.0.3
+  - android-28
+  - extra-android-m2repository
+  - sys-img-armeabi-v7a-android-21
 before_install:
-    - sudo pip install --upgrade pip
-    - sudo pip install six
-
+- sudo pip install --upgrade pip
+- sudo pip install six
 install:
-    - echo no | npm install -g nativescript
-    - tns usage-reporting disable
-    - tns error-reporting disable
+- echo no | npm install -g nativescript
+- tns usage-reporting disable
+- tns error-reporting disable
+before_deploy:
+  - cd publish
+  - ./prepare.sh
+  - cd src
+deploy:
+  provider: npm
+  email: florian@rocketloop.de
+  api_key:
+    secure: xAqgDxIPtklRhrSTvm8v0cw8eR6wIeSghgQwZm/usiAfnjjL9bESSccNk6P1KjkQUg5npMln4uZhNerSv9KZ/1T8Hs/ZWegJ6eGkIz45grpM1SOcUKypjlOQBxg7Pp6DH4C7oPE6cIioSIfamzEyGD7jhu7T6LD+i5sw5+8tbBCfe1NDgXEI8VoPlQJjgE6w246ACRSFrBDnywszo5YkR0AByntUS56kBRHjccvxFdhmSqShOsDQsI0ZCwimofLPv7oFFgXeE6nLGQdxiQlfuGMJbJP+B4rw4VTmGoE1zrOaQf2nrPMAa3N/JDxWIkwM1aKyerJ/5nEA2+A0pxJjua6TFRdO/oOTj2JcJHmWJsvJnws1fbEJup40yXHlwt4DeOhUchUmw6iCc9deKDjD2cJE8k4TiKaOyZPZ2wimAHb7tJivSThzoa1GLnAhnd/OGBnl5WSdhvZ7N4PkN6PpRtoWqa/dufUj/YiZls5L85u1IGOoEKnKb283wHppKkvYWor41jWCJNLLZEPJvlY90ILR00IRhGTre2QNkjaCAGzRIxAvSgI5WT34ewZpQvcFiDoILOacgEZPAcavdGrZgYKmtPw1xFpbM25zO47ntfBo0KCxzLUpDumYbF8N7SbIl9poh55Th8TPZGSJP89WnfR1JlXtqv0Qe+/tXEKERWA=
+  on:
+    tags: true
+    repo: flore2003/nativescript-markdown-view

@@ -2,15 +2,13 @@
 
 SOURCE_DIR=../src;
 TO_SOURCE_DIR=src;
-PACK_DIR=package;
 ROOT_DIR=..;
-PUBLISH=--publish
 
-install(){
+install() {
     npm i
 }
 
-pack() {
+prepare() {
 
     echo 'Clearing /src and /package...'
     node_modules/.bin/rimraf "$TO_SOURCE_DIR"
@@ -30,18 +28,6 @@ pack() {
     cd "$TO_SOURCE_DIR"
     npm run build
     cd ..
-
-    echo 'Creating package...'
-    # create package dir
-    mkdir "$PACK_DIR"
-
-    # create the package
-    cd "$PACK_DIR"
-    npm pack ../"$TO_SOURCE_DIR"
-
-    # delete source directory used to create the package
-    cd ..
-    node_modules/.bin/rimraf "$TO_SOURCE_DIR"
 }
 
-install && pack
+install && prepare
