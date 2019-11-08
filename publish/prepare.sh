@@ -12,7 +12,6 @@ prepare() {
 
     echo 'Clearing /src and /package...'
     node_modules/.bin/rimraf "$TO_SOURCE_DIR"
-    node_modules/.bin/rimraf "$PACK_DIR"
 
     # copy src
     echo 'Copying src...'
@@ -23,9 +22,12 @@ prepare() {
     node_modules/.bin/ncp "$ROOT_DIR"/LICENSE "$TO_SOURCE_DIR"/LICENSE
     node_modules/.bin/ncp "$ROOT_DIR"/README.md "$TO_SOURCE_DIR"/README.md
 
+    echo 'Installing dependencies in /src...'
+    cd "$TO_SOURCE_DIR"
+    npm i
+
     # compile package and copy files required by npm
     echo 'Building /src...'
-    cd "$TO_SOURCE_DIR"
     npm run build
     cd ..
 }
