@@ -1,13 +1,18 @@
+stages:
+  - lint
+  - build
+  - deploy
+
 matrix:
   include:
-  - stage: Lint
+  - stage: lint
     language: node_js
     os: linux
     node_js: '10'
     script:
     - cd src && npm run ci.tslint
     - cd ../demo && npm run ci.tslint
-  - stage: WebPack, Build and Test
+  - stage: build
     os: osx
     env:
     - WebPack="iOS"
@@ -42,6 +47,19 @@ matrix:
     jdk: oraclejdk8
     script:
     - cd src && npm i && npm run tsc && cd ../demo && tns build ios
+  - stage: deploy
+    before_deploy:
+      - cd publish
+      - ./prepare.sh
+      - cd src
+    deploy:
+      provider: npm
+      email: florian@rocketloop.de
+      api_key:
+        secure: xAqgDxIPtklRhrSTvm8v0cw8eR6wIeSghgQwZm/usiAfnjjL9bESSccNk6P1KjkQUg5npMln4uZhNerSv9KZ/1T8Hs/ZWegJ6eGkIz45grpM1SOcUKypjlOQBxg7Pp6DH4C7oPE6cIioSIfamzEyGD7jhu7T6LD+i5sw5+8tbBCfe1NDgXEI8VoPlQJjgE6w246ACRSFrBDnywszo5YkR0AByntUS56kBRHjccvxFdhmSqShOsDQsI0ZCwimofLPv7oFFgXeE6nLGQdxiQlfuGMJbJP+B4rw4VTmGoE1zrOaQf2nrPMAa3N/JDxWIkwM1aKyerJ/5nEA2+A0pxJjua6TFRdO/oOTj2JcJHmWJsvJnws1fbEJup40yXHlwt4DeOhUchUmw6iCc9deKDjD2cJE8k4TiKaOyZPZ2wimAHb7tJivSThzoa1GLnAhnd/OGBnl5WSdhvZ7N4PkN6PpRtoWqa/dufUj/YiZls5L85u1IGOoEKnKb283wHppKkvYWor41jWCJNLLZEPJvlY90ILR00IRhGTre2QNkjaCAGzRIxAvSgI5WT34ewZpQvcFiDoILOacgEZPAcavdGrZgYKmtPw1xFpbM25zO47ntfBo0KCxzLUpDumYbF8N7SbIl9poh55Th8TPZGSJP89WnfR1JlXtqv0Qe+/tXEKERWA=
+      on:
+        tags: true
+        repo: flore2003/nativescript-markdown-view
 android:
   components:
   - tools
@@ -57,15 +75,3 @@ install:
 - echo no | npm install -g nativescript
 - tns usage-reporting disable
 - tns error-reporting disable
-before_deploy:
-  - cd publish
-  - ./prepare.sh
-  - cd src
-deploy:
-  provider: npm
-  email: florian@rocketloop.de
-  api_key:
-    secure: xAqgDxIPtklRhrSTvm8v0cw8eR6wIeSghgQwZm/usiAfnjjL9bESSccNk6P1KjkQUg5npMln4uZhNerSv9KZ/1T8Hs/ZWegJ6eGkIz45grpM1SOcUKypjlOQBxg7Pp6DH4C7oPE6cIioSIfamzEyGD7jhu7T6LD+i5sw5+8tbBCfe1NDgXEI8VoPlQJjgE6w246ACRSFrBDnywszo5YkR0AByntUS56kBRHjccvxFdhmSqShOsDQsI0ZCwimofLPv7oFFgXeE6nLGQdxiQlfuGMJbJP+B4rw4VTmGoE1zrOaQf2nrPMAa3N/JDxWIkwM1aKyerJ/5nEA2+A0pxJjua6TFRdO/oOTj2JcJHmWJsvJnws1fbEJup40yXHlwt4DeOhUchUmw6iCc9deKDjD2cJE8k4TiKaOyZPZ2wimAHb7tJivSThzoa1GLnAhnd/OGBnl5WSdhvZ7N4PkN6PpRtoWqa/dufUj/YiZls5L85u1IGOoEKnKb283wHppKkvYWor41jWCJNLLZEPJvlY90ILR00IRhGTre2QNkjaCAGzRIxAvSgI5WT34ewZpQvcFiDoILOacgEZPAcavdGrZgYKmtPw1xFpbM25zO47ntfBo0KCxzLUpDumYbF8N7SbIl9poh55Th8TPZGSJP89WnfR1JlXtqv0Qe+/tXEKERWA=
-  on:
-    tags: true
-    repo: flore2003/nativescript-markdown-view
