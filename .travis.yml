@@ -14,23 +14,7 @@ matrix:
     - cd src && npm run ci.tslint
     - cd ../demo && npm run ci.tslint
   - stage: build
-    os: osx
-    env:
-    - WebPack="iOS"
-    osx_image: xcode10.2
-    language: node_js
-    node_js: '10'
-    jdk: oraclejdk8
-    script: cd demo && npm run build.plugin && npm i && tns build ios --bundle --env.uglify
-  - language: android
-    os: linux
-    env:
-    - WebPack="Android"
-    jdk: oraclejdk8
-    before_install: nvm install 10
-    script: cd demo && npm run build.plugin && npm i && tns build android --bundle
-      --env.uglify --env.snapshot
-  - language: android
+    language: android
     env:
     - BuildAndroid="28"
     os: linux
@@ -41,7 +25,7 @@ matrix:
   - os: osx
     env:
     - BuildiOS="12"
-    - Xcode="10.0"
+    - Xcode="10.2"
     osx_image: xcode10.2
     language: node_js
     node_js: '10'
@@ -49,6 +33,9 @@ matrix:
     script:
     - cd src && npm i && npm run tsc && cd ../demo && tns build ios
   - stage: deploy
+    language: node_js
+    os: linux
+    node_js: '10'
     before_deploy:
       - cd publish
       - ./prepare.sh
