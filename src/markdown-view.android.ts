@@ -1,4 +1,6 @@
 import { fontSizeProperty, markdownProperty, MarkdownViewBase } from './markdown-view.common';
+import InputType = android.text.InputType;
+
 ​
 declare var ru: any;
 ​
@@ -8,7 +10,7 @@ export class MarkdownView extends MarkdownViewBase {
 ​
     markwon: any;
 ​
-    private _fontSize = 14;
+    private _fontSize = 18;
 ​
     constructor() {
         super();
@@ -21,6 +23,7 @@ export class MarkdownView extends MarkdownViewBase {
     public createNativeView() {
         this.markwon = ru.noties.markwon.Markwon.create(this._context);
         this._android = new android.widget.TextView(this._context);
+        this._android.setInputType(InputType.TYPE_NULL);
         return this._android;
     }
 ​
