@@ -1,3 +1,9 @@
+# 1.4.0 (2019-11-11)
+
+### Features
+
+- Adds base font size property on Android (#8)
+
 ## 1.3.1 (2019-11-08)
 
 ### Features
