@@ -26,6 +26,7 @@ export class MarkdownView extends MarkdownViewBase {
 ​
     [fontSizeProperty.setNative](size: number) {
         this._fontSize = size;
+        this._android.setTextSize(Number(this._fontSize));
     }
 ​
     [markdownProperty.setNative](markdown: string) {
