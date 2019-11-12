@@ -2,26 +2,27 @@
       xmlns:mv="nativescript-markdown-view">
     <ScrollView>
         <FlexboxLayout class="p-20" flexDirection="column">
-            <Label text="Text" style="margin-top: 10; margin-bottom: 10;"/>
+            <Label class="h1" text="Text" style="margin-top: 10; margin-bottom: 10;"/>
+            <mv:MarkdownView textWrap="true" markdown="{{text}}" class="large"/>
             <mv:MarkdownView textWrap="true" markdown="{{text}}"/>
-            <mv:MarkdownView textWrap="true" markdown="{{text}}" fontSize="12"/>
+            <mv:MarkdownView textWrap="true" markdown="{{text}}" class="small"/>
 
-            <Label text="Headings" style="margin-top: 10; margin-bottom: 10;"/>
+            <Label class="h1" text="Headings" style="margin-top: 10; margin-bottom: 10;"/>
             <mv:MarkdownView textWrap="true" markdown="{{headings}}"/>
 
-            <Label text="Emphasis" style="margin-top: 10; margin-bottom: 10;"/>
+            <Label class="h1" text="Emphasis" style="margin-top: 10; margin-bottom: 10;"/>
             <mv:MarkdownView textWrap="true" markdown="{{emphasis}}"/>
 
-            <Label text="Lists" style="margin-top: 10; margin-bottom: 10;"/>
+            <Label class="h1" text="Lists" style="margin-top: 10; margin-bottom: 10;"/>
             <mv:MarkdownView textWrap="true" markdown="{{lists}}"/>
 
-            <Label text="Link" style="margin-top: 10; margin-bottom: 10;"/>
+            <Label class="h1" text="Link" style="margin-top: 10; margin-bottom: 10;"/>
             <mv:MarkdownView textWrap="true" markdown="{{link}}"/>
 
-            <Label text="Quote" style="margin-top: 10; margin-bottom: 10;"/>
+            <Label class="h1" text="Quote" style="margin-top: 10; margin-bottom: 10;"/>
             <mv:MarkdownView textWrap="true" markdown="{{quote}}"/>
 
-            <Label text="Code" style="margin-top: 10; margin-bottom: 10;"/>
+            <Label class="h1" text="Code" style="margin-top: 10; margin-bottom: 10;"/>
             <mv:MarkdownView textWrap="true" markdown="{{code}}"/>
         </FlexboxLayout>
     </ScrollView>
