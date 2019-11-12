@@ -1,4 +1,4 @@
-if: branch = (master AND commit_message !~ /(release:)/) OR tag IS present
+if: (branch = master AND commit_message !~ /(release:)/) OR tag IS present
 
 stages:
   - lint
