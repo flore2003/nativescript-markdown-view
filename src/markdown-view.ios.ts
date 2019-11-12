@@ -42,6 +42,10 @@ export class MarkdownView extends MarkdownViewBase {
     }
 
     private _updateMarkdown() {
-        this._ios.attributedText = this.mdParser.attributedStringFromMarkdown(this._currentMarkdown);
+        if (this._currentMarkdown) {
+            this._ios.attributedText = this.mdParser.attributedStringFromMarkdown(this._currentMarkdown);
+        } else {
+            this._ios.text = '';
+        }
     }
 }

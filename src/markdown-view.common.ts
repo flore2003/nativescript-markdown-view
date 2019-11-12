@@ -1,8 +1,8 @@
 import { CSSType, Property } from '@nativescript/core/ui/core/view';
-import { Label } from '@nativescript/core/ui/label';
+import { TextView } from '@nativescript/core/ui/text-view';
 
 @CSSType('MarkdownView')
-export class MarkdownViewBase extends Label {
+export class MarkdownViewBase extends TextView {
 
     /**
      * Gets the native [android widget](http://developer.android.com/reference/android/widget/TextView.html) that represents the user interface for this component. Valid only when running on Android OS.
