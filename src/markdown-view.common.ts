@@ -1,5 +1,5 @@
-import { CSSType, Property } from 'tns-core-modules/ui/core/view';
-import { Label } from 'tns-core-modules/ui/label';
+import { CSSType, Property } from '@nativescript/core/ui/core/view';
+import { Label } from '@nativescript/core/ui/label';
 
 @CSSType('MarkdownView')
 export class MarkdownViewBase extends Label {

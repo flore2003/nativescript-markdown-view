@@ -1,6 +1,6 @@
 import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
 import InputType = android.text.InputType;
-import { fontSizeProperty } from 'tns-core-modules/ui/styling/style-properties';
+import { fontSizeProperty } from '@nativescript/core/ui/styling/style-properties';
 
 ​
 declare var ru: any;

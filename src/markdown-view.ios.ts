@@ -1,5 +1,5 @@
 import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
-import { fontSizeProperty } from 'tns-core-modules/ui/styling/style-properties';
+import { fontSizeProperty } from '@nativescript/core/ui/styling/style-properties';
 
 export class MarkdownView extends MarkdownViewBase {
 
