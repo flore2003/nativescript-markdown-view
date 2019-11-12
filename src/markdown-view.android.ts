@@ -1,5 +1,6 @@
 import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
 import InputType = android.text.InputType;
+import { fontSizeProperty } from 'tns-core-modules/ui/styling/style-properties';
 
 ​
 declare var ru: any;
@@ -24,16 +25,12 @@ export class MarkdownView extends MarkdownViewBase {
         this._android.setInputType(InputType.TYPE_NULL);
         return this._android;
     }
-​
-    // [fontSizeProperty.setNative](size: number) {
-    //     this._fontSize = size;
-    //     this._android.setTextSize(Number(this._fontSize));
-    // }
-​
+
+    [fontSizeProperty.setNative](fontSize: number) {
+        this._android.setTextSize(Number(fontSize));
+    }
+
     [markdownProperty.setNative](markdown: string) {
-        console.log('Font Size', this.style.fontSize);
-        console.log('Font Size2', this.fontSize);
-        this._android.setTextSize(Number(this.fontSize));
         this.markwon.setMarkdown(this.nativeView, markdown);
     }
 ​

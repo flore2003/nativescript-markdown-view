@@ -1,41 +1,47 @@
 import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
+import { fontSizeProperty } from 'tns-core-modules/ui/styling/style-properties';
 
 export class MarkdownView extends MarkdownViewBase {
 
     _ios: UITextView;
 
-    private _fontSize = 18;
+    mdParser: TSMarkdownParser;
+
+    _currentMarkdown: string;
 
     constructor() {
         super();
+
+        this.mdParser = TSMarkdownParser.standardParser();
     }
 
     public createNativeView() {
         this._ios = super.createNativeView() as UITextView;
+        this._ios.editable = false;
+        this._ios.selectable = true;
         return this._ios;
     }
 
-    // [fontSizeProperty.setNative](size: number) {
-    //     this._fontSize = size;
-    // }
-
-    [markdownProperty.setNative](markdown: string) {
-        const md = TSMarkdownParser.standardParser();
-        this._ios.editable = false;
-        this._ios.selectable = true;
-
+    [fontSizeProperty.setNative](fontSize: number) {
         const defaultAttributes =
-            NSDictionary.dictionaryWithObjectForKey(UIFont.systemFontOfSize(this._fontSize), NSFontAttributeName);
+            NSDictionary.dictionaryWithObjectForKey(UIFont.systemFontOfSize(fontSize), NSFontAttributeName);
         const emphasisAttributes =
-            NSDictionary.dictionaryWithObjectForKey(UIFont.italicSystemFontOfSize(this._fontSize), NSFontAttributeName);
+            NSDictionary.dictionaryWithObjectForKey(UIFont.italicSystemFontOfSize(fontSize), NSFontAttributeName);
         const strongAttributes =
-            NSDictionary.dictionaryWithObjectForKey(UIFont.boldSystemFontOfSize(this._fontSize), NSFontAttributeName);
+            NSDictionary.dictionaryWithObjectForKey(UIFont.boldSystemFontOfSize(fontSize), NSFontAttributeName);
 
-        md.defaultAttributes = defaultAttributes;
-        md.emphasisAttributes = emphasisAttributes;
-        md.strongAttributes = strongAttributes;
-
-        this._ios.attributedText = md.attributedStringFromMarkdown(markdown);
+        this.mdParser.defaultAttributes = defaultAttributes;
+        this.mdParser.emphasisAttributes = emphasisAttributes;
+        this.mdParser.strongAttributes = strongAttributes;
+        this._updateMarkdown();
     }
 
+    [markdownProperty.setNative](markdown: string) {
+        this._currentMarkdown = markdown;
+        this._updateMarkdown();
+    }
+
+    private _updateMarkdown() {
+        this._ios.attributedText = this.mdParser.attributedStringFromMarkdown(this._currentMarkdown);
+    }
 }
