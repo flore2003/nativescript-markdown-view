@@ -1,7 +1,8 @@
-import { Property } from 'tns-core-modules/ui/core/view';
-import {TextView} from "tns-core-modules/ui/text-view";
+import { CSSType, Property } from 'tns-core-modules/ui/core/view';
+import { Label } from 'tns-core-modules/ui/label';
 
-export class MarkdownViewBase extends TextView {
+@CSSType('MarkdownView')
+export class MarkdownViewBase extends Label {
 
     /**
      * Gets the native [android widget](http://developer.android.com/reference/android/widget/TextView.html) that represents the user interface for this component. Valid only when running on Android OS.
@@ -21,11 +22,4 @@ export const markdownProperty = new Property<MarkdownViewBase, string>({
     affectsLayout: true
 });
 
-export const fontSizeProperty = new Property<MarkdownViewBase, number>({
-    name: "fontSize",
-    defaultValue: 18,
-    affectsLayout: true
-});
-
 markdownProperty.register(MarkdownViewBase);
-fontSizeProperty.register(MarkdownViewBase);

@@ -1,1 +1,9 @@
 ﻿@import '~nativescript-theme-core/css/core.light.css';
+
+.large {
+    font-size: 18;
+}
+
+.small {
+    font-size: 12;
+}

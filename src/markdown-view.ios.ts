@@ -1,4 +1,4 @@
-import { markdownProperty, fontSizeProperty, MarkdownViewBase } from './markdown-view.common';
+import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
 
 export class MarkdownView extends MarkdownViewBase {
 
@@ -15,9 +15,9 @@ export class MarkdownView extends MarkdownViewBase {
         return this._ios;
     }
 
-    [fontSizeProperty.setNative](size: number) {
-        this._fontSize = size;
-    }
+    // [fontSizeProperty.setNative](size: number) {
+    //     this._fontSize = size;
+    // }
 
     [markdownProperty.setNative](markdown: string) {
         const md = TSMarkdownParser.standardParser();
