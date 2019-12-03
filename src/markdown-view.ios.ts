@@ -23,6 +23,7 @@ export class MarkdownView extends MarkdownViewBase {
         const md = TSMarkdownParser.standardParser();
         this._ios.editable = false;
         this._ios.selectable = true;
+        this._ios.scrollEnabled = false;
 
         const defaultAttributes =
             NSDictionary.dictionaryWithObjectForKey(UIFont.systemFontOfSize(this._fontSize), NSFontAttributeName);
