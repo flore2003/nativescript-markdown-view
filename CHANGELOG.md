@@ -1,3 +1,9 @@
+## 1.4.1 (2019-12-03)
+
+### Bug Fixes
+
+- Fixes issue with text view scrolling on iOS
+
 # 1.4.0 (2019-11-11)
 
 ### Features
