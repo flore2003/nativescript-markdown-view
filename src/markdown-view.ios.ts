@@ -19,6 +19,7 @@ export class MarkdownView extends MarkdownViewBase {
         this._ios = super.createNativeView() as UITextView;
         this._ios.editable = false;
         this._ios.selectable = true;
+        this._ios.scrollEnabled = false;
         return this._ios;
     }
 
