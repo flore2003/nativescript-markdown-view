@@ -1,42 +1,74 @@
-import { markdownProperty, fontSizeProperty, MarkdownViewBase } from './markdown-view.common';
+import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
+import { fontSizeProperty, colorProperty } from '@nativescript/core/ui/styling/style-properties';
+import { Color } from '@nativescript/core/color/color';
 
 export class MarkdownView extends MarkdownViewBase {
 
     _ios: UITextView;
 
-    private _fontSize = 18;
+    mdParser: TSMarkdownParser;
+
+    _currentMarkdown: string;
+
+    _fontSize: number;
+
+    _color: UIColor;
 
     constructor() {
         super();
+
+        this.mdParser = TSMarkdownParser.standardParser();
     }
 
     public createNativeView() {
         this._ios = super.createNativeView() as UITextView;
-        return this._ios;
-    }
-
-    [fontSizeProperty.setNative](size: number) {
-        this._fontSize = size;
-    }
-
-    [markdownProperty.setNative](markdown: string) {
-        const md = TSMarkdownParser.standardParser();
         this._ios.editable = false;
         this._ios.selectable = true;
         this._ios.scrollEnabled = false;
-
-        const defaultAttributes =
-            NSDictionary.dictionaryWithObjectForKey(UIFont.systemFontOfSize(this._fontSize), NSFontAttributeName);
-        const emphasisAttributes =
-            NSDictionary.dictionaryWithObjectForKey(UIFont.italicSystemFontOfSize(this._fontSize), NSFontAttributeName);
-        const strongAttributes =
-            NSDictionary.dictionaryWithObjectForKey(UIFont.boldSystemFontOfSize(this._fontSize), NSFontAttributeName);
-
-        md.defaultAttributes = defaultAttributes;
-        md.emphasisAttributes = emphasisAttributes;
-        md.strongAttributes = strongAttributes;
-
-        this._ios.attributedText = md.attributedStringFromMarkdown(markdown);
+        return this._ios;
     }
 
+    [fontSizeProperty.setNative](fontSize: number) {
+        this._fontSize = fontSize;
+        this._updateStyling();
+    }
+
+    [colorProperty.setNative](value: Color | UIColor) {
+        this._color = value instanceof Color ? value.ios : value;
+        this._updateStyling();
+    }
+
+    [markdownProperty.setNative](markdown: string) {
+        this._currentMarkdown = markdown;
+        this._updateMarkdown();
+    }
+
+    private _updateMarkdown() {
+        if (this._currentMarkdown) {
+            this._ios.attributedText = this.mdParser.attributedStringFromMarkdown(this._currentMarkdown);
+        } else {
+            this._ios.text = '';
+        }
+    }
+
+    private _updateStyling() {
+        const defaultAttributes =
+            NSDictionary.dictionaryWithObjectsForKeys(
+                [
+                    UIFont.systemFontOfSize(this._fontSize),
+                    this._color
+                ], [
+                    NSFontAttributeName,
+                    NSForegroundColorAttributeName
+                ]);
+        const emphasisAttributes =
+            NSDictionary.dictionaryWithObjectsForKeys([UIFont.italicSystemFontOfSize(this._fontSize)], [NSFontAttributeName]);
+        const strongAttributes =
+            NSDictionary.dictionaryWithObjectsForKeys([UIFont.boldSystemFontOfSize(this._fontSize)], [NSFontAttributeName]);
+
+        this.mdParser.defaultAttributes = defaultAttributes;
+        this.mdParser.emphasisAttributes = emphasisAttributes;
+        this.mdParser.strongAttributes = strongAttributes;
+        this._updateMarkdown();
+    }
 }

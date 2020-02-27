@@ -1,6 +1,7 @@
-import { Property } from 'tns-core-modules/ui/core/view';
-import {TextView} from "tns-core-modules/ui/text-view";
+import { CSSType, Property } from '@nativescript/core/ui/core/view';
+import { TextView } from '@nativescript/core/ui/text-view';
 
+@CSSType('MarkdownView')
 export class MarkdownViewBase extends TextView {
 
     /**
@@ -9,9 +10,9 @@ export class MarkdownViewBase extends TextView {
     android: any /* android.widget.TextView */;
 
     /**
-     * Gets the native MarkDownTextView that represents the user interface for this component. Valid only when running on iOS.
+     * Gets the native UITextView that represents the user interface for this component. Valid only when running on iOS.
      */
-    ios: any /* MarkDownTextView */;
+    ios: any /* UITextView */;
 
 }
 
@@ -21,11 +22,4 @@ export const markdownProperty = new Property<MarkdownViewBase, string>({
     affectsLayout: true
 });
 
-export const fontSizeProperty = new Property<MarkdownViewBase, number>({
-    name: "fontSize",
-    defaultValue: 18,
-    affectsLayout: true
-});
-
 markdownProperty.register(MarkdownViewBase);
-fontSizeProperty.register(MarkdownViewBase);

@@ -1,5 +1,6 @@
-import { fontSizeProperty, markdownProperty, MarkdownViewBase } from './markdown-view.common';
+import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
 import InputType = android.text.InputType;
+import { fontSizeProperty } from '@nativescript/core/ui/styling/style-properties';
 
 ​
 declare var ru: any;
@@ -9,9 +10,7 @@ export class MarkdownView extends MarkdownViewBase {
     _android: any = null; // android.widget.TextView
 ​
     markwon: any;
-​
-    private _fontSize = 18;
-​
+​​
     constructor() {
         super();
     }
@@ -26,14 +25,12 @@ export class MarkdownView extends MarkdownViewBase {
         this._android.setInputType(InputType.TYPE_NULL);
         return this._android;
     }
-​
-    [fontSizeProperty.setNative](size: number) {
-        this._fontSize = size;
-        this._android.setTextSize(Number(this._fontSize));
+
+    [fontSizeProperty.setNative](fontSize: number) {
+        this._android.setTextSize(Number(fontSize));
     }
-​
+
     [markdownProperty.setNative](markdown: string) {
-        this._android.setTextSize(Number(this._fontSize));
         this.markwon.setMarkdown(this.nativeView, markdown);
     }
 ​
