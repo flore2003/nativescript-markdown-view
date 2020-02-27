@@ -10,6 +10,11 @@
 
 MarkdownView {
     background-color: transparent;
+    color: black;
+}
+
+.ns-light MarkdownView {
+    color: black;
 }
 
 .ns-dark MarkdownView {

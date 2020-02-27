@@ -10,9 +10,9 @@ export class MarkdownViewBase extends TextView {
     android: any /* android.widget.TextView */;
 
     /**
-     * Gets the native MarkDownTextView that represents the user interface for this component. Valid only when running on iOS.
+     * Gets the native UITextView that represents the user interface for this component. Valid only when running on iOS.
      */
-    ios: any /* MarkDownTextView */;
+    ios: any /* UITextView */;
 
 }
 
