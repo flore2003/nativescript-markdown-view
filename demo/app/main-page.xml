@@ -7,6 +7,11 @@
             <mv:MarkdownView textWrap="true" markdown="{{text}}"/>
             <mv:MarkdownView textWrap="true" markdown="{{text}}" class="small"/>
 
+            <Label class="h1" text="IMG" style="margin-top: 10; margin-bottom: 10;"/>
+
+            <mv:MarkdownView textWrap="true" markdown="{{img}}" />
+
+
             <Label class="h1" text="Headings" style="margin-top: 10; margin-bottom: 10;"/>
             <mv:MarkdownView textWrap="true" markdown="{{headings}}"/>
 
