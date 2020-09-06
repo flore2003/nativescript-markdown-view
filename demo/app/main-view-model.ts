@@ -9,7 +9,7 @@ export class HelloWorldModel extends Observable {
     link: string;
     quote: string;
     code: string;
-
+    img;
     constructor() {
         super();
         this.text = "This is a sample text";
@@ -19,5 +19,7 @@ export class HelloWorldModel extends Observable {
         this.link = "[Sample link](https://github.com/flore2003/nativescript-markdown-view)";
         this.quote = "> Quote\n>> Quote";
         this.code = "`private doSomething(): Something[]`";
+        this.img = '![](https://raw.githubusercontent.com/dudipsh/nativescript-ngx-date-range/master/screenshots/calendar_he.png)'
+
     }
 }
