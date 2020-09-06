@@ -19,7 +19,7 @@ export class HelloWorldModel extends Observable {
         this.link = "[Sample link](https://github.com/flore2003/nativescript-markdown-view)";
         this.quote = "> Quote\n>> Quote";
         this.code = "`private doSomething(): Something[]`";
-        this.img = '![](https://raw.githubusercontemarkdown-view.android.tsnt.com/dudipsh/nativescript-ngx-date-range/master/screenshots/calendar_he.png)';
+        this.img = '![nativescript date range](https://raw.githubusercontent.com/dudipsh/nativescript-ngx-date-range/master/screenshots/calendar_ios.png)';
 
     }
 }
