@@ -1,6 +1,6 @@
 import { markdownProperty, MarkdownViewBase } from './markdown-view.common';
 import { fontSizeProperty, colorProperty } from '@nativescript/core/ui/styling/style-properties';
-import { Color } from '@nativescript/core/color/color';
+import { Color } from '@nativescript/core';
 
 export class MarkdownView extends MarkdownViewBase {
 
