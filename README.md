@@ -18,6 +18,8 @@ Run the following command from the root of your project:
 tns plugin add nativescript-markdown-view
 ```
 
+Note: Use nativescript-markdown-view@2.x for {N} 6 and below
+
 This command automatically installs the necessary files, as well as stores nativescript-markdown-view as a dependency in your project's package.json file.
 
 ## Usage 

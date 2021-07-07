@@ -1,0 +1,14 @@
+{
+  "name": "nativescript-markdown-view-angular",
+  "main": "bundles/nativescript-markdown-view-angular.umd.js",
+  "module": "fesm2015/nativescript-markdown-view-angular.js",
+  "es2015": "fesm2015/nativescript-markdown-view-angular.js",
+  "esm2015": "esm2015/nativescript-markdown-view-angular.js",
+  "fesm2015": "fesm2015/nativescript-markdown-view-angular.js",
+  "typings": "nativescript-markdown-view-angular.d.ts",
+  "metadata": "nativescript-markdown-view-angular.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}
