@@ -23,7 +23,7 @@ matrix:
     jdk: oraclejdk8
     before_install: nvm install 10
     script:
-    - cd src && npm i && npm run tsc && cd ../demo && tns build android
+    - cd src && npm i && npm run tsc && cd ../demo && tns build android && cd ../demo_angular && tns build android
   - os: osx
     env:
     - BuildiOS="12"
@@ -33,7 +33,7 @@ matrix:
     node_js: '10'
     jdk: oraclejdk8
     script:
-    - pod repo update && cd src && npm i && npm run tsc && cd ../demo && tns build ios
+    - pod repo update && cd src && npm i && npm run tsc && cd ../demo && tns build ios && cd ../demo_angular && tns build ios
   - stage: deploy
     language: node_js
     os: linux
